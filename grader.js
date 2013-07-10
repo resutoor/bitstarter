@@ -15,6 +15,9 @@ References:
    - https://github.com/visionmedia/commander.js
    - http://tjholowaychuk.com/post/9103188408/commander-js-nodejs-command-line-interfaces-made-easy
 
+ + restler.js
+   - https://github.com/danwrong/restler
+
  + JSON
    - http://en.wikipedia.org/wiki/JSON
    - https://developer.mozilla.org/en-US/docs/JSON
@@ -61,8 +64,6 @@ var buildfn = function(checks) {
 	if (result instanceof Error) {
 	    console.error('Error: ' + util.format(response.message));
 	} else {
-//            fs.writeFileSync(csvfile, result);
-//            csv2console(csvfile, headers);
 	    $ = cheerio.load(result);
 	    var out = {};
 	    for(var ii in checks) {
@@ -76,10 +77,6 @@ var buildfn = function(checks) {
 };
 
 var checkUrl = function(url, checksfile) {
-//    $ = cheerioHtmlFile(htmlfile);
-//    rest.get(url).on('complete', function(data) {
-//      console.log(data);
-//    });
     var checks = loadChecks(checksfile).sort();
     var response2console = buildfn(checks);
 
